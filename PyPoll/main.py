@@ -42,18 +42,18 @@ for electionData in electionDataList:
         print(" ")
         print(" ")
 
-        # Write analysis into new CSV file
-        with open(outputCSV, 'w', newline="") as csvFile:
-            csvWriter = csv.writer(csvFile, delimiter=' ')
-            csvWriter.writerow(["Election Results"])
-            csvWriter.writerow(["-----------------------------"])
-            csvWriter.writerow(["Total Votes: " + str(totalVotes)])
-            csvWriter.writerow(["-----------------------------"])
-            for key,value in candidatesList.items():
-                csvWriter.writerow([key + ": " + str(round(value/totalVotes*100,1)) + "% (" + str(value) + ")"])        
-            csvWriter.writerow(["-----------------------------"])
-            csvWriter.writerow(["Winner: " + max(candidatesList.items(), key=operator.itemgetter(1))[0]])
-            csvWriter.writerow(["-----------------------------"])
+    # Write analysis into new CSV file
+    with open(outputCSV, 'w', newline="") as csvFile:
+        csvWriter = csv.writer(csvFile, delimiter=' ')
+        csvWriter.writerow(["Election Results"])
+        csvWriter.writerow(["-----------------------------"])
+        csvWriter.writerow(["Total Votes: " + str(totalVotes)])
+        csvWriter.writerow(["-----------------------------"])
+        for key,value in candidatesList.items():
+            csvWriter.writerow([key + ": " + str(round(value/totalVotes*100,1)) + "% (" + str(value) + ")"])        
+        csvWriter.writerow(["-----------------------------"])
+        csvWriter.writerow(["Winner: " + max(candidatesList.items(), key=operator.itemgetter(1))[0]])
+        csvWriter.writerow(["-----------------------------"])
             
 
         

@@ -52,16 +52,16 @@ for budgetData in budgetList:
         print(" ")
         print(" ")
 
-        # Write analysis into new CSV file
-        with open(outputCSV, 'w', newline="") as csvFile:
-            csvWriter = csv.writer(csvFile, delimiter=' ')
-            csvWriter.writerow(["Financial Analysis"])
-            csvWriter.writerow(["-----------------------------"])
-            csvWriter.writerow(["Total Months:  "+ str(totalMonths)])
-            csvWriter.writerow(["Total Revenue: $" + str(totalRevenue)])
-            csvWriter.writerow(["Average Revenue Change: $" + str(int(averageRevenueChange/(totalMonths-1)))])
-            csvWriter.writerow(["Greatest Increase in Revenue: " + greatestIncreaseDate + " ($" + str(greatestIncreaseAmount) + ")"])
-            csvWriter.writerow(["Greatest Decrease in Revenue: " + greatestDecreaseDate + " ($" + str(greatestDecreaseAmount) + ")"])
+    # Write analysis into new CSV file
+    with open(outputCSV, 'w', newline="") as csvFile:
+        csvWriter = csv.writer(csvFile, delimiter=' ')
+        csvWriter.writerow(["Financial Analysis"])
+        csvWriter.writerow(["-----------------------------"])
+        csvWriter.writerow(["Total Months:  "+ str(totalMonths)])
+        csvWriter.writerow(["Total Revenue: $" + str(totalRevenue)])
+        csvWriter.writerow(["Average Revenue Change: $" + str(int(averageRevenueChange/(totalMonths-1)))])
+        csvWriter.writerow(["Greatest Increase in Revenue: " + greatestIncreaseDate + " ($" + str(greatestIncreaseAmount) + ")"])
+        csvWriter.writerow(["Greatest Decrease in Revenue: " + greatestDecreaseDate + " ($" + str(greatestDecreaseAmount) + ")"])
           
 
 
