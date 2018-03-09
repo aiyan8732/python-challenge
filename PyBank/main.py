@@ -10,8 +10,8 @@ for budgetData in budgetList:
     # Grab raw budget data
     budgetCSV = os.path.join('raw_data','budget_data_' + budgetData + ".csv")
 
-    # Create new output CSV
-    outputCSV = os.path.join('output','output_' + budgetData + ".csv")
+    # Create new output txt file
+    outputTXT = os.path.join('output','output_' + budgetData + ".txt")
 
     # Open current budget data CSV
     with open(budgetCSV, 'r', encoding = 'utf-8') as csvFile:
@@ -52,16 +52,15 @@ for budgetData in budgetList:
         print(" ")
         print(" ")
 
-    # Write analysis into new CSV file
-    with open(outputCSV, 'w', newline="") as csvFile:
-        csvWriter = csv.writer(csvFile, delimiter=' ')
-        csvWriter.writerow(["Financial Analysis"])
-        csvWriter.writerow(["-----------------------------"])
-        csvWriter.writerow(["Total Months:  "+ str(totalMonths)])
-        csvWriter.writerow(["Total Revenue: $" + str(totalRevenue)])
-        csvWriter.writerow(["Average Revenue Change: $" + str(int(averageRevenueChange/(totalMonths-1)))])
-        csvWriter.writerow(["Greatest Increase in Revenue: " + greatestIncreaseDate + " ($" + str(greatestIncreaseAmount) + ")"])
-        csvWriter.writerow(["Greatest Decrease in Revenue: " + greatestDecreaseDate + " ($" + str(greatestDecreaseAmount) + ")"])
+    # Write analysis into new txt file
+    with open(outputTXT, 'w',) as txtFile:
+        txtFile.write("Financial Analysis")
+        txtFile.write("\n-----------------------------")
+        txtFile.write("\nTotal Months:  "+ str(totalMonths))
+        txtFile.write("\nTotal Revenue: $" + str(totalRevenue))
+        txtFile.write("\nAverage Revenue Change: $" + str(int(averageRevenueChange/(totalMonths-1))))
+        txtFile.write("\nGreatest Increase in Revenue: " + greatestIncreaseDate + " ($" + str(greatestIncreaseAmount) + ")")
+        txtFile.write("\nGreatest Decrease in Revenue: " + greatestDecreaseDate + " ($" + str(greatestDecreaseAmount) + ")")
           
 
 

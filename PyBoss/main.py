@@ -90,7 +90,7 @@ for employeeData in employeeDataList:
 
     # Export into new CSV file
     with open(outputCSV, 'w', newline="") as csvFile:
-        csvWriter = csv.writer(csvFile, delimiter=' ')
+        csvWriter = csv.writer(csvFile, delimiter=',')
         csvWriter.writerow(["Emp ID", "First Name", "Last Name", "DOB", "SSN", "State"])
         csvWriter.writerows(wholeTuple)
 
