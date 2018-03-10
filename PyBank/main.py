@@ -24,29 +24,30 @@ for budgetData in budgetList:
         greatestIncreaseAmount = 0
         greatestDecreaseDate = ""
         greatestDecreaseAmount = 0
+        previousMonthRevenue = 0
         # Skip header
         next(csvReader, None)
         for row in csvReader:
             totalMonths = totalMonths + 1
             totalRevenue = totalRevenue + int(row[1])
             # exclude 1st month for revenue change
-            if (totalMonths == 1):
-                previousMonthRevenue = int(row[1])
-            else:
-                revenueChange = int(row[1]) - int(previousMonthRevenue)
-                averageRevenueChange = averageRevenueChange + revenueChange
-                if (revenueChange >= 0 and revenueChange > greatestIncreaseAmount):
-                    greatestIncreaseAmount = revenueChange
-                    greatestIncreaseDate = row[0]
-                elif (revenueChange < 0 and revenueChange < greatestDecreaseAmount):
-                    greatestDecreaseAmount = revenueChange
-                    greatestDecreaseDate = row[0]
-                previousMonthRevenue = row[1]
+            # if (totalMonths == 1):
+            #     previousMonthRevenue = int(row[1])
+            # else:
+            revenueChange = int(row[1]) - int(previousMonthRevenue)
+            averageRevenueChange = averageRevenueChange + revenueChange
+            if (revenueChange >= 0 and revenueChange > greatestIncreaseAmount):
+                greatestIncreaseAmount = revenueChange
+                greatestIncreaseDate = row[0]
+            elif (revenueChange < 0 and revenueChange < greatestDecreaseAmount):
+                greatestDecreaseAmount = revenueChange
+                greatestDecreaseDate = row[0]
+            previousMonthRevenue = row[1]
         print("Financial Analysis")
         print("-----------------------------")
         print("Total Months: " + str(totalMonths))
         print("Total Revenue: $" + str(totalRevenue))
-        print("Average Revenue Change: $" + str(int(averageRevenueChange/(totalMonths-1))))
+        print("Average Revenue Change: $" + str(int(averageRevenueChange/totalMonths)))
         print("Greatest Increase in Revenue: " + greatestIncreaseDate + " ($" + str(greatestIncreaseAmount) + ")")
         print("Greatest Decrease in Revenue: " + greatestDecreaseDate + " ($" + str(greatestDecreaseAmount) + ")")
         print(" ")
@@ -58,7 +59,7 @@ for budgetData in budgetList:
         txtFile.write("\n-----------------------------")
         txtFile.write("\nTotal Months:  "+ str(totalMonths))
         txtFile.write("\nTotal Revenue: $" + str(totalRevenue))
-        txtFile.write("\nAverage Revenue Change: $" + str(int(averageRevenueChange/(totalMonths-1))))
+        txtFile.write("\nAverage Revenue Change: $" + str(int(averageRevenueChange/totalMonths)))
         txtFile.write("\nGreatest Increase in Revenue: " + greatestIncreaseDate + " ($" + str(greatestIncreaseAmount) + ")")
         txtFile.write("\nGreatest Decrease in Revenue: " + greatestDecreaseDate + " ($" + str(greatestDecreaseAmount) + ")")
           
